@@ -37,7 +37,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 // import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 
 const formSchema = z.object({
-  teamName: z.string().regex(NAME_REGEXP, {
+  name: z.string().regex(NAME_REGEXP, {
     message: 'Invalid team name',
   }),
   manager: z.string(),
@@ -55,7 +55,7 @@ const formSchema = z.object({
 });
 
 const defaultValues: z.infer<typeof formSchema> = {
-  teamName: '',
+  name: '',
   logo: '',
   manager: '',
   coaches: [],
@@ -171,7 +171,7 @@ const CreateTeamForm = () => {
         {/* Team Name */}
         <FormField
           control={form.control}
-          name="teamName"
+          name="name"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Team Name</FormLabel>

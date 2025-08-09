@@ -13,17 +13,17 @@ import { IoNavigate, IoShareSocial, IoCopySharp  } from "react-icons/io5";
 import { MdEdit } from "react-icons/md";
 
 const TeamPage = () => {
-  const { teamName } = useParams();
+  const { name } = useParams();
   const teams = useAppSelector(selectTeams);
 
   const team = useMemo(() => (
     teams.size
       ? Array.from(teams.values())
         .find(t =>
-          t.teamName.toLowerCase() === teamName?.toString().toLowerCase()
+          t.name.toLowerCase() === name?.toString().toLowerCase()
         )
       : null
-  ), [teams, teamName]);
+  ), [teams, name]);
 
   return (
     <Page
@@ -33,15 +33,15 @@ const TeamPage = () => {
           <Avatar className='size-16'>
             <AvatarImage src={team?.logo} />
             <AvatarFallback className='text-2xl font-semibold text-stone-400 bg-stone-200'>
-              {teamName?.toString().split(" ").map(part => part.charAt(0).toUpperCase())}
+              {name?.toString().split(" ").map(part => part.charAt(0).toUpperCase())}
             </AvatarFallback>
           </Avatar>
-          <p className='text-stone-800 grow'>{teamName?.toString()}</p>
+          <p className='text-stone-800 grow'>{name?.toString()}</p>
 
           <DropdownMenu>
             <DropdownMenuTrigger className='bg-stone-200 rounded-md text-base p-2 text-stone-500'><SlOptionsVertical /></DropdownMenuTrigger>
             <DropdownMenuContent align='end'>
-              <DropdownMenuLabel>{teamName}</DropdownMenuLabel>
+              <DropdownMenuLabel>{name}</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem><MdEdit /> Edit</DropdownMenuItem>
               <DropdownMenuItem><IoShareSocial /> Share</DropdownMenuItem>
