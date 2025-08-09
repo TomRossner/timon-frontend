@@ -19,6 +19,12 @@ const NavBar = () => {
 
       <NavigationMenuItem>
         <NavigationMenuLink asChild>
+          <Link href="/events">Events</Link>
+        </NavigationMenuLink>
+      </NavigationMenuItem>
+
+      <NavigationMenuItem>
+        <NavigationMenuLink asChild>
           <Link href="/teams">Teams</Link>
         </NavigationMenuLink>
       </NavigationMenuItem>

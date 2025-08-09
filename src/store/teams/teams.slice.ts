@@ -3,14 +3,14 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface TeamsState {
     teams: Teams;
-    isLoading: boolean;
-    error: string | null;
+    isTeamsLoading: boolean;
+    teamsError: string | null;
 }
 
 const initialState: TeamsState = {
     teams: new Map(),
-    isLoading: false,
-    error: null,
+    isTeamsLoading: false,
+    teamsError: null,
 }
 
 export const teamsSlice = createSlice({

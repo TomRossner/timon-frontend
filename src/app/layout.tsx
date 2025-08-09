@@ -8,6 +8,8 @@ import { teamsSlice } from "@/store/teams/teams.slice";
 import { usersSlice } from "@/store/users/users.slice";
 import ReduxProvider from "./ReduxProvider";
 import NavBar from "../components/NavBar";
+import { eventsSlice } from "@/store/events/events.slice";
+import { getEvents } from "@/services/events.service";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,18 +31,23 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [teamsMap, usersMap] = await Promise.all([getTeams(), getUsers()]);
+  const [teamsMap, usersMap, eventsMap] = await Promise.all([getTeams(), getUsers(), getEvents()]);
   
   const preloadedState: PreloadedState = {
     [teamsSlice.name]: {
       teams: teamsMap,
-      isLoading: false,
-      error: null,
+      isTeamsLoading: false,
+      teamsError: null,
     },
     [usersSlice.name]: {
       users: usersMap,
       isUsersLoading: false,
       usersError: null,
+    },
+    [eventsSlice.name]: {
+      events: eventsMap,
+      isEventsLoading: false,
+      eventsError: null,
     },
   }
   return (
