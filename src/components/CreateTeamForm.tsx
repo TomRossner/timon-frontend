@@ -16,6 +16,7 @@ import z from 'zod';
 import { NAME_REGEXP } from '@/lib/regexp';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from './ui/select';
+import { DEFAULT_DIVISIONS } from '@/lib/divisions';
 // import {
 //   Popover,
 //   PopoverContent,
@@ -41,6 +42,7 @@ const formSchema = z.object({
     message: 'Invalid team name',
   }),
   manager: z.string(),
+  division: z.enum(DEFAULT_DIVISIONS).nullable(),
   coaches: z.array(z.string()).optional(),
   roster: z.array(z.string()).optional(),
   logo: z.string().optional(),
@@ -56,6 +58,7 @@ const formSchema = z.object({
 
 const defaultValues: z.infer<typeof formSchema> = {
   name: '',
+  division: 'pro',
   logo: '',
   manager: '',
   coaches: [],

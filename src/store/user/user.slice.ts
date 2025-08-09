@@ -1,6 +1,6 @@
-import { UserProfile, User } from "@/types/user";
+import { getAuthToken } from "@/services/auth.service";
+import { UserProfile, User, LoginCredentials } from "@/types/user";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import axios from "axios";
 
 interface AuthState {
     user: User | undefined;
@@ -18,16 +18,11 @@ const initialState: AuthState = {
     error: null,
 }
 
-type Credentials = {
-    email: string;
-    password: string;
-}
-
 export const fetchAuthToken = createAsyncThunk(
     'auth/fetchAuthToken',
-    async (credentials: Credentials, { rejectWithValue }) => {
+    async (credentials: LoginCredentials, { rejectWithValue }) => {
         try {
-            const {data: token} = await axios.post(`${process.env.BACKEND_URL as string}/auth/`, credentials);
+            const { data: token } = await getAuthToken(credentials);
             return token;
         } catch (error) {
             if (error instanceof Error) {

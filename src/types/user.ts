@@ -27,3 +27,8 @@ export type UserProfile = UserSummary & {
 }
 
 export type FullUser = UserSummary & UserProfile;
+
+export type LoginCredentials = {
+    email: string;
+    password: string;
+}

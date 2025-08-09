@@ -23,6 +23,7 @@ type Props = {
 
 const friendlyNames: Record<string, string> = {
   teams: 'Teams',
+  events: 'Events',
   new: 'Create team',
   edit: 'Edit team',
   signin: 'Sign in',
