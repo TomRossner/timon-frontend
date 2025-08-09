@@ -1,7 +1,8 @@
-'use client'
+'use client';
 
 import { Event, Events } from '@/types/event';
-import { Link } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 import React, { useMemo } from 'react';
 
 type Props = {
@@ -18,7 +19,7 @@ const EventsList = ({ events }: Props) => {
                 className='flex gap-3 items-center cursor-pointer p-3 text-blue-400 font-semibold text-lg w-full text-start hover:bg-stone-50 active:bg-stone-50 transition-colors duration-100'
                 href={`/events/${event.title}`}
             >
-                <div className='size-9 rounded-full bg-stone-200 flex items-center justify-center text-stone-100'>{event.title}</div>
+                <Image src={event.logo || ""} alt="" className='bg-white rounded-full size-9 border-2 border-gray-300' />
                 {event.title}
             </Link>
         </li>

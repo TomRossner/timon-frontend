@@ -31,7 +31,15 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [teamsMap, usersMap, eventsMap] = await Promise.all([getTeams(), getUsers(), getEvents()]);
+  const [
+    teamsMap,
+    usersMap,
+    eventsMap
+  ] = await Promise.all([
+    getTeams(),
+    getUsers(),
+    getEvents(),
+  ]);
   
   const preloadedState: PreloadedState = {
     [teamsSlice.name]: {
@@ -51,6 +59,7 @@ export default async function RootLayout({
     },
   }
   return (
+    // html lang should also be in state
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
