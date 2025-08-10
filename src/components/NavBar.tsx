@@ -3,7 +3,7 @@ import { NavigationMenu, NavigationMenuItem, NavigationMenuLink } from "./ui/nav
 
 const NavBar = () => {
   return (
-    <NavigationMenu className="flex max-w-full justify-start list-none">
+    <NavigationMenu className="flex max-w-full justify-start list-none gap-1">
 
       <NavigationMenuItem>
         <NavigationMenuLink asChild>

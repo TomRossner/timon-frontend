@@ -186,6 +186,37 @@ const CreateTeamForm = () => {
           )}
         />
 
+        <FormField
+          control={form.control}
+          name="division"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Division</FormLabel>
+              <FormControl>
+                <Select>
+                  <SelectTrigger className="w-[220px] bg-white">
+                    <SelectValue placeholder="Select your team's division" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      {DEFAULT_DIVISIONS.map(division => (
+                        <SelectItem
+                          key={division}
+                          onSelect={() => {field.onChange(/*user._id*/)}}
+                          value={division}
+                        >
+                          {division.charAt(0).toUpperCase()}{division.substring(1, division.length)}
+                        </SelectItem>
+                      ))}
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
         {/* Manager Select (Single) */}
         {/* <FormField
           control={form.control}

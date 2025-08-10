@@ -17,9 +17,9 @@ const EventsList = ({ events }: Props) => {
         <li key={event.eventId} className='w-full border hover:border-blue-500 border-stone-200 rounded-sm hover:scale-[1.02] active:scale-[1.02] transition-all duration-100 overflow-hidden'>
             <Link
                 className='flex gap-3 items-center cursor-pointer p-3 text-blue-400 font-semibold text-lg w-full text-start hover:bg-stone-50 active:bg-stone-50 transition-colors duration-100'
-                href={`/events/${event.title}`}
+                href={`/events/${event.title.replace('/', '-')}`}
             >
-                <Image src={event.logo || ""} alt="" className='bg-white rounded-full size-9 border-2 border-gray-300' />
+                {event.logo && <Image src={event.logo || ""} alt="" className='bg-white rounded-full size-9 border-2 border-gray-300' />}
                 {event.title}
             </Link>
         </li>
