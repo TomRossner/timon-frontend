@@ -6,6 +6,7 @@ import { useAppDispatch } from '@/store/hooks';
 import { setToken, setUser, setUserProfile } from '@/store/auth/auth.slice';
 import { saveJWT } from '@/lib/localStorage';
 import { decodeJwt } from '@/lib/jwt';
+import { LINKS } from '@/lib/links';
 
 export default function AuthCallback() {
   const params = useSearchParams();
@@ -15,7 +16,7 @@ export default function AuthCallback() {
   useEffect(() => {
     const token = params.get('token');
     if (!token || token === 'undefined') {
-      router.push('/signin');
+      router.push(LINKS.SIGN_IN);
       return;
     }
 
@@ -38,8 +39,8 @@ export default function AuthCallback() {
       }));
     }
 
-    router.push('/');
+    router.push(LINKS.HOME);
   }, [dispatch, params, router]);
 
-  return <p>Logging you in...</p>;
+  return <p className='text-center text-black font-medium text-xl my-10'>Logging you in...</p>;
 }

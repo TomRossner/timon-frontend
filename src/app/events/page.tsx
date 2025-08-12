@@ -3,6 +3,7 @@
 import EventsList from '@/components/EventsList';
 import Page from '@/components/Page';
 import { Button } from '@/components/ui/button';
+import { LINKS } from '@/lib/links';
 import { selectEvents } from '@/store/events/events.selectors';
 import { useAppSelector } from '@/store/hooks';
 import { useRouter } from 'next/navigation';
@@ -22,7 +23,7 @@ const EventsPage = () => {
           
           <Button
             className='cursor-pointer bg-blue-500 text-stone-200 hover:bg-blue-600 hover:text-white active:bg-blue-600 active:text-white'
-            onClick={() => router.push('/events/new')}
+            onClick={() => router.push(LINKS.EVENTS_NEW)}
           >
             <BsPlus className='text-stone-200 text-xl'/>
             Create event

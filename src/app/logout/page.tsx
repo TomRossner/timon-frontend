@@ -1,6 +1,7 @@
 'use client';
 
 import Page from '@/components/Page';
+import { LINKS } from '@/lib/links';
 import { logout } from '@/services/auth.service';
 import { selectUserProfile } from '@/store/auth/auth.selectors';
 import { setToken, setUser, setUserProfile } from '@/store/auth/auth.slice';
@@ -18,14 +19,14 @@ const LogoutPage = () => {
             const logoutUser = async () => await logout(user.uid);
             
             logoutUser()
-                .then(res => res.status === 200 ? cleanupUser() : router.push('/'))
+                .then(res => res.status === 200 ? cleanupUser() : router.push(LINKS.HOME))
                 .catch(console.error);
 
             const cleanupUser = () => {
                 dispatch(setUser(undefined));
                 dispatch(setUserProfile(undefined));
                 dispatch(setToken(null));
-                router.push('/');
+                router.push(LINKS.HOME);
             }
         }
     }, [user, router, dispatch]);

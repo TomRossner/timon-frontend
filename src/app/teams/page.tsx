@@ -3,6 +3,7 @@
 import Page from '@/components/Page';
 import TeamsList from '@/components/TeamsList';
 import { Button } from '@/components/ui/button';
+import { LINKS } from '@/lib/links';
 import { useAppSelector } from '@/store/hooks';
 import { selectTeams } from '@/store/teams/teams.selectors';
 import { useRouter } from 'next/navigation';
@@ -23,7 +24,7 @@ const TeamsPage = () => {
           
           <Button
             className='cursor-pointer bg-blue-500 text-stone-200 hover:bg-blue-600 hover:text-white active:bg-blue-600 active:text-white'
-            onClick={() => router.push('/teams/new')}
+            onClick={() => router.push(LINKS.TEAMS_NEW)}
           >
             <BsPlus className='text-stone-200 text-xl'/>
             Create team

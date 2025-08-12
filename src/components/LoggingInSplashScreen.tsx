@@ -1,6 +1,7 @@
 'use client';
 
 import { decodeJwt } from '@/lib/jwt';
+import { LINKS } from '@/lib/links';
 import { saveJWT } from '@/lib/localStorage';
 import { setAuthError, setIsAuthenticating, setToken, setUser, setUserProfile } from '@/store/auth/auth.slice';
 import { useAppDispatch } from '@/store/hooks';
@@ -38,7 +39,7 @@ const LoggingInSplashScreen = () => {
                     userName: user.userName,
                 } satisfies User));
                 dispatch(setIsAuthenticating(false));
-                router.push(`/`);
+                router.push(LINKS.HOME);
                 return;
             }
 

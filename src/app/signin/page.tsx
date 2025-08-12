@@ -1,10 +1,10 @@
-'use client'
+'use client';
 
 import Page from '@/components/Page';
 import SignInForm from '@/components/SignInForm';
 import React from 'react';
 
-const SignIn = () => {
+const SignInPage = () => {
   return (
     <Page id='signInPage' title='Log in to your account' titleClassname='text-center'>
       <SignInForm />
@@ -12,4 +12,4 @@ const SignIn = () => {
   )
 }
 
-export default SignIn;
+export default SignInPage;

@@ -1,5 +1,6 @@
 'use client';
 
+import { LINKS } from '@/lib/links';
 import { selectUserProfile } from '@/store/auth/auth.selectors';
 import { useAppSelector } from '@/store/hooks';
 import { useRouter } from 'next/navigation';
@@ -12,7 +13,7 @@ function isAuth<P extends object>(WrappedComponent: ComponentType<P>) {
 
     useEffect(() => {
       if (!user) {
-        router.push('/signin');
+        router.push(LINKS.SIGN_IN);
       }
     }, [router, user]);
 

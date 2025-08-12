@@ -11,6 +11,7 @@ import NavBar from "../components/NavBar";
 import { eventsSlice } from "@/store/events/events.slice";
 import { getEvents } from "@/services/events.service";
 import AuthProvider from "./teams/AuthProvider";
+import DeleteAccountModal from "@/components/DeleteAccountModal";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -68,6 +69,7 @@ export default async function RootLayout({
         <ReduxProvider preloadedState={preloadedState}>
           <AuthProvider>
             <NavBar />
+            <DeleteAccountModal />
             {children}
           </AuthProvider>
         </ReduxProvider>
