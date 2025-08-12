@@ -27,6 +27,7 @@ const friendlyNames: Record<string, string> = {
   new: 'Create team',
   edit: 'Edit team',
   signin: 'Sign in',
+  profile: 'My Profile',
 }
 
 const Page = ({ id, title, className, children, withBreadcrumbs = true, titleClassname }: Props) => {

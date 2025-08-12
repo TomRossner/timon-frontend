@@ -8,7 +8,7 @@ interface EventsState {
 }
 
 const initialState: EventsState = {
-    events: new Map(),
+    events: [],
     isEventsLoading: false,
     eventsError: null,
 }

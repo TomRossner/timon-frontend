@@ -58,7 +58,7 @@ const formSchema = z.object({
 
 const defaultValues: z.infer<typeof formSchema> = {
   name: '',
-  division: 'pro',
+  division: null,
   logo: '',
   manager: '',
   coaches: [],
@@ -147,10 +147,7 @@ const CreateTeamForm = () => {
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      ...defaultValues,
-      // manager: '',
-    },
+    defaultValues,
   });
 
   const onSubmit = (data: z.infer<typeof formSchema>) => {

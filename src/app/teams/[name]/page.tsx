@@ -17,12 +17,9 @@ const TeamPage = () => {
   const teams = useAppSelector(selectTeams);
 
   const team = useMemo(() => (
-    teams.size
-      ? Array.from(teams.values())
-        .find(t =>
-          t.name.toLowerCase() === name?.toString().toLowerCase()
-        )
-      : null
+    teams?.find(t =>
+      t.name.toLowerCase() === name?.toString().toLowerCase()
+    )
   ), [teams, name]);
 
   return (

@@ -25,4 +25,4 @@ export type Address = {
 
 export type Team = TeamData;
 
-export type Teams = Map<TeamID, TeamData>;
+export type Teams = Team[];

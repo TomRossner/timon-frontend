@@ -2,7 +2,7 @@
 
 import { Team, Teams } from '@/types/team';
 import Link from 'next/link';
-import React, { useMemo } from 'react';
+import React from 'react';
 
 type Props = {
     teams: Teams;
@@ -10,11 +10,10 @@ type Props = {
 
 const TeamsList = ({ teams }: Props) => {
     // const teamsMap = use(teamsPromise);
-    const teamsArr = useMemo(() => Array.from(teams.values()), [teams]);
 
   return (
     <ul className='flex flex-col w-full p-4 gap-2'>
-      {teamsArr.map((team: Team) => (
+      {teams?.map((team: Team) => (
         <li key={team.teamId} className='w-full border hover:border-blue-500 border-stone-200 rounded-sm hover:scale-[1.02] active:scale-[1.02] transition-all duration-100 overflow-hidden'>
           <Link
             className='flex gap-3 items-center cursor-pointer p-3 text-blue-400 font-semibold text-lg w-full text-start hover:bg-stone-50 active:bg-stone-50 transition-colors duration-100'

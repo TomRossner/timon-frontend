@@ -10,6 +10,7 @@ import ReduxProvider from "./ReduxProvider";
 import NavBar from "../components/NavBar";
 import { eventsSlice } from "@/store/events/events.slice";
 import { getEvents } from "@/services/events.service";
+import AuthProvider from "./teams/AuthProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,9 +33,9 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const [
-    teamsMap,
-    usersMap,
-    eventsMap
+    teamsArray,
+    usersArray,
+    eventsArray
   ] = await Promise.all([
     getTeams(),
     getUsers(),
@@ -43,17 +44,17 @@ export default async function RootLayout({
   
   const preloadedState: PreloadedState = {
     [teamsSlice.name]: {
-      teams: teamsMap,
+      teams: teamsArray,
       isTeamsLoading: false,
       teamsError: null,
     },
     [usersSlice.name]: {
-      users: usersMap,
+      users: usersArray,
       isUsersLoading: false,
       usersError: null,
     },
     [eventsSlice.name]: {
-      events: eventsMap,
+      events: eventsArray,
       isEventsLoading: false,
       eventsError: null,
     },
@@ -65,8 +66,10 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ReduxProvider preloadedState={preloadedState}>
-          <NavBar />
-          {children}
+          <AuthProvider>
+            <NavBar />
+            {children}
+          </AuthProvider>
         </ReduxProvider>
       </body>
     </html>

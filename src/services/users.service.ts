@@ -7,9 +7,7 @@ export const createMockUsers = async () => {
 
 export const getUsers = async () => {
     const { data } = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/users`);
-    console.log(data);
 
-    const users = new Map(Object.entries(data).map((entry => entry)));
-
+    const users = Array.from(Object.values(data));
     return users as Users;
 }

@@ -18,7 +18,7 @@ export type Gender = "male" | "female" | "non-binary" | "prefer_not_to_say";
 
 export type User = UserSummary;
 
-export type Users = Map<UID, UserSummary>;
+export type Users = UserSummary[];
 
 export type UserProfile = UserSummary & {
     createdAt: Date;

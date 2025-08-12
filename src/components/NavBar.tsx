@@ -1,7 +1,13 @@
+'use client';
+
 import Link from "next/link";
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink } from "./ui/navigation-menu";
+import { useAppSelector } from "@/store/hooks";
+import { selectUserProfile } from "@/store/auth/auth.selectors";
 
 const NavBar = () => {
+  const user = useAppSelector(selectUserProfile);
+
   return (
     <NavigationMenu className="flex max-w-full justify-start list-none gap-1">
 
@@ -31,11 +37,28 @@ const NavBar = () => {
 
       <div className="grow" />
       
-      <NavigationMenuItem>
-        <NavigationMenuLink asChild>
-          <Link href="/signin">Log in</Link>
-        </NavigationMenuLink>
-      </NavigationMenuItem>
+      {!user && (
+        <NavigationMenuItem>
+          <NavigationMenuLink asChild>
+            <Link href="/signin">Log in</Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+      )}
+
+      {user && (
+        <>
+          <NavigationMenuItem>
+            <NavigationMenuLink asChild>
+              <Link href="/profile">My profile</Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink asChild>
+              <Link href="/logout">Log out</Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+        </>
+      )}
 
     </NavigationMenu>
   )

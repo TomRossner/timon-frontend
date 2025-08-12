@@ -4,16 +4,16 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface AuthState {
     user: User | undefined;
-    UserProfile: UserProfile | undefined;
+    userProfile: UserProfile | undefined;
     isLoading: boolean;
-    authToken: string | null;
+    token: string | null;
     error: string | null;
 }
 
 const initialState: AuthState = {
     user: undefined,
-    UserProfile: undefined,
-    authToken: null,
+    userProfile: undefined,
+    token: null,
     isLoading: false,
     error: null,
 }
@@ -42,26 +42,31 @@ const authSlice = createSlice({
             state.user = action.payload;
         },
         setUserProfile(state, action: PayloadAction<UserProfile | undefined>) {
-            state.UserProfile = action.payload;
+            state.userProfile = action.payload;
         },
         setAuthError(state, action: PayloadAction<string | null>) {
             state.error = action.payload;
             state.isLoading = false;
         },
-        setIsLoading(state, action: PayloadAction<boolean>) {
+        setIsAuthenticating(state, action: PayloadAction<boolean>) {
             state.isLoading = action.payload;
             state.error = null;
+        },
+        setToken(state, action: PayloadAction<string | null>) {
+            state.token = action.payload;
+            state.error = null;
+            state.isLoading = false;
         }
     },
     extraReducers: (builder) => {
         builder
             .addCase(fetchAuthToken.fulfilled, (state, action: PayloadAction<string>) => {
-                state.authToken = action.payload;
+                state.token = action.payload;
                 state.isLoading = false;
                 state.error = null;
             })
             .addCase(fetchAuthToken.rejected, (state) => {
-                state.authToken = null;
+                state.token = null;
                 state.error = "Authentication failed";
                 state.isLoading = false;
             })
@@ -75,8 +80,9 @@ const authSlice = createSlice({
 export const {
     setUser,
     setUserProfile,
-    setIsLoading,
+    setIsAuthenticating,
     setAuthError,
+    setToken,
 } = authSlice.actions;
 
 export default authSlice.reducer;

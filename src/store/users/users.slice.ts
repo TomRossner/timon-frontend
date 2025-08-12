@@ -8,7 +8,7 @@ interface UsersState {
 }
 
 const initialState: UsersState = {
-    users: new Map(),
+    users: [],
     isUsersLoading: false,
     usersError: null,
 }

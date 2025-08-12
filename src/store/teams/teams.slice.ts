@@ -8,7 +8,7 @@ interface TeamsState {
 }
 
 const initialState: TeamsState = {
-    teams: new Map(),
+    teams: [],
     isTeamsLoading: false,
     teamsError: null,
 }

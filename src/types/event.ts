@@ -27,4 +27,4 @@ export type Event = EventData & {
     eventId: EventID;
 }
 
-export type Events = Map<EventID, Event>;
+export type Events = Event[];
